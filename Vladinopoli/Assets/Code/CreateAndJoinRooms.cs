@@ -6,12 +6,15 @@ using Photon.Pun;
 
 public class CreateAndJoinRooms : MonoBehaviourPunCallbacks
 {
+    //[SerializeField] private CanvasManager canvasManager;
+
     public InputField createInput;
     public InputField joinInput;
 
     public void CreateRoom()
     {
         PhotonNetwork.CreateRoom(createInput.text);
+        //canvasManager.SwitchCanvas(CanvasType.Game );
     }
 
     public void JoinRoom()

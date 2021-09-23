@@ -17,7 +17,7 @@ public class CanvasManager : MonoBehaviour
         SwitchCanvas(CanvasType.Game);
     }
 
-    private void SwitchCanvas(CanvasType canvasType)
+    internal void SwitchCanvas(CanvasType canvasType)
     {
         if (lastActiveCanvas != null)
         {
@@ -35,11 +35,5 @@ public class CanvasManager : MonoBehaviour
         {
             Debug.LogWarning("The main menu canvas was not found!");
         }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }
