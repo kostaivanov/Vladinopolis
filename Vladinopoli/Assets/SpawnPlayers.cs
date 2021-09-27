@@ -18,20 +18,19 @@ public class SpawnPlayers : MonoBehaviour
         if (StaticFunctions.instance.name == "Rumen".Trim())
         {
             //Vector3 randomPosition = new Vector3(Random.Range(min_X, max_X), 36.76f, Random.Range(min_Z, max_Z));
-            Vector3 randomPosition = new Vector3(72.14f, 43.55f, 82.12f);
+            Vector3 randomPosition = new Vector3(75f, 40f, 90f);
+            
 
-            PhotonNetwork.Instantiate(rumenPrefab.name, randomPosition, Quaternion.identity);
+            GameObject rumen = PhotonNetwork.Instantiate(rumenPrefab.name, randomPosition, Quaternion.identity);
+            rumen.transform.localEulerAngles = new Vector3(-90f, 50f, 180f);
         }
         else
         {
             //Vector3 randomPosition = new Vector3(Random.Range(min_X, max_X), 36.76f, Random.Range(min_Z, max_Z));
-            Vector3 randomPosition = new Vector3(71.77f, 39.59188f, 65.06f);
-            PhotonNetwork.Instantiate(kostaPrefab.name, randomPosition, Quaternion.identity);
+            Vector3 randomPosition = new Vector3(65f, 36f, 82f);
+            GameObject kosta = PhotonNetwork.Instantiate(kostaPrefab.name, randomPosition, Quaternion.identity);
+            kosta.transform.localEulerAngles = new Vector3(-90f, 45f, 0f);
         }
        
-    }
-    private void Update()
-    {
-        Debug.Log(StaticFunctions.instance.name);
     }
 }
