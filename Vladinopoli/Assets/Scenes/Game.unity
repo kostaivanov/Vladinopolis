@@ -5193,7 +5193,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &716402180
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12194,7 +12194,7 @@ MonoBehaviour:
     type: 3}
   kostaPrefab: {fileID: 64150795576505464, guid: 4cb9ebfdba4765240ade4c3e2da5ae4a,
     type: 3}
-  camera: {fileID: 0}
+  camera: {fileID: 716402182}
   min_X: 64
   max_X: 74
   min_Z: 80
