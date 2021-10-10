@@ -15,7 +15,7 @@ public class MouseHandler : MonoBehaviourPun
 
     void Start()
     {
-        camera.transform.eulerAngles = new Vector3(80f, 0.0f, 0.0f);
+        //this.gameObject.transform.eulerAngles = new Vector3(80f, 0.0f, 0.0f);
     }
 
     void Update()
@@ -31,6 +31,6 @@ public class MouseHandler : MonoBehaviourPun
         xRotation -= mouseY;
         xRotation = Mathf.Clamp(xRotation, -90, 90);
 
-        camera.transform.eulerAngles = new Vector3(xRotation, yRotation, 0.0f);
+        this.gameObject.transform.eulerAngles = new Vector3(xRotation, yRotation, 0.0f);
     }
 }
