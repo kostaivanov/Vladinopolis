@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
-public class MouseHandler : MonoBehaviour
+public class MouseHandler : MonoBehaviourPun
 {
     // horizontal rotation speed
     public float horizontalSpeed = 1f;
@@ -10,15 +11,19 @@ public class MouseHandler : MonoBehaviour
     public float verticalSpeed = 1f;
     private float xRotation = 0.0f;
     private float yRotation = 0.0f;
-    private Camera cam;
+    [SerializeField] private Camera camera;
 
     void Start()
     {
-        cam = Camera.main;
+        camera.transform.eulerAngles = new Vector3(80f, 0.0f, 0.0f);
     }
 
     void Update()
     {
+        if (photonView.IsMine == false && PhotonNetwork.IsConnected == true)
+        {
+            return;
+        }
         float mouseX = Input.GetAxis("Mouse X") * horizontalSpeed;
         float mouseY = Input.GetAxis("Mouse Y") * verticalSpeed;
 
@@ -26,6 +31,6 @@ public class MouseHandler : MonoBehaviour
         xRotation -= mouseY;
         xRotation = Mathf.Clamp(xRotation, -90, 90);
 
-        cam.transform.eulerAngles = new Vector3(xRotation, yRotation, 0.0f);
+        camera.transform.eulerAngles = new Vector3(xRotation, yRotation, 0.0f);
     }
 }

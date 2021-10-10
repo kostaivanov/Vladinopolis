@@ -15,6 +15,7 @@ public class SpawnPlayers : MonoBehaviour
 
     private void Start()
     {
+        
         camera.enabled = false;
         if (StaticFunctions.instance.name == "Rumen".Trim())
         {
