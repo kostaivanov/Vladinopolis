@@ -12,6 +12,8 @@ public class MouseHandler : MonoBehaviourPun
     private float xRotation = 0.0f;
     private float yRotation = 0.0f;
     [SerializeField] private Camera camera;
+    float mouseX = 0;
+    float mouseY = 0;
 
     void Start()
     {
@@ -24,8 +26,17 @@ public class MouseHandler : MonoBehaviourPun
         {
             return;
         }
-        float mouseX = Input.GetAxis("Mouse X") * horizontalSpeed;
-        float mouseY = Input.GetAxis("Mouse Y") * verticalSpeed;
+
+        if (Input.GetAxis("Mouse X") != 0 && Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            mouseX = Input.GetAxis("Mouse X") * horizontalSpeed;
+
+        }
+        if (Input.GetAxis("Mouse Y") != 0 && Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            mouseY = Input.GetAxis("Mouse Y") * verticalSpeed;
+
+        }
 
         yRotation += mouseX;
         xRotation -= mouseY;
