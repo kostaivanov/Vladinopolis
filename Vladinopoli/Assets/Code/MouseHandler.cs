@@ -19,6 +19,14 @@ public class MouseHandler : MonoBehaviourPun
     {
         //this.gameObject.transform.eulerAngles = new Vector3(80f, 0.0f, 0.0f);
     }
+    //void OnGUI()
+    //{
+    //    Event e = Event.current;
+    //    if (e.type == EventType.MouseMove && e.control && e.keyCode == KeyCode.shigf)
+    //    {
+    //        mouseX = Input.GetAxis("Mouse X") * horizontalSpeed;
+    //    }
+    //}
 
     void Update()
     {
@@ -27,12 +35,13 @@ public class MouseHandler : MonoBehaviourPun
             return;
         }
 
-        if (Input.GetAxis("Mouse X") != 0 && Input.GetKeyDown(KeyCode.LeftShift))
+        if (Input.GetButtonDown("left shift") && Input.GetAxis("Mouse X") != 0)
         {
             mouseX = Input.GetAxis("Mouse X") * horizontalSpeed;
+            Debug.Log("asdasdasdasdasda");
 
         }
-        if (Input.GetAxis("Mouse Y") != 0 && Input.GetKeyDown(KeyCode.LeftShift))
+        if (Input.GetKeyDown(KeyCode.LeftShift) && Input.GetAxis("Mouse Y") != 0)
         {
             mouseY = Input.GetAxis("Mouse Y") * verticalSpeed;
 
