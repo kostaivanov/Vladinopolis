@@ -10,10 +10,12 @@ GameObject:
   m_Component:
   - component: {fileID: 839983330988732098}
   - component: {fileID: -8369807678176003338}
-  - component: {fileID: -3693737213464520290}
   - component: {fileID: 71125441551858465}
   - component: {fileID: 6268101949871717906}
+  - component: {fileID: -3693737213464520290}
   - component: {fileID: 1131952146254152947}
+  - component: {fileID: 2983950601078876815}
+  - component: {fileID: 7935815479795472740}
   m_Layer: 0
   m_Name: Kosta
   m_TagString: Untagged
@@ -61,21 +63,6 @@ MonoBehaviour:
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
---- !u!114 &-3693737213464520290
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 64150795576505464}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 870409c84036ed448a20494695918947, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  horizontalSpeed: 1
-  verticalSpeed: 1
-  camera: {fileID: 1723496666179486523}
 --- !u!114 &71125441551858465
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -126,6 +113,21 @@ MonoBehaviour:
     InterpolateOption: 0
     InterpolateMoveTowardsSpeed: 1
     InterpolateLerpSpeed: 0
+--- !u!114 &-3693737213464520290
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 64150795576505464}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 870409c84036ed448a20494695918947, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  horizontalSpeed: 1
+  verticalSpeed: 1
+  camera: {fileID: 1723496666179486523}
 --- !u!114 &1131952146254152947
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -139,6 +141,42 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   camera: {fileID: 1723496666179486521}
+--- !u!114 &2983950601078876815
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 64150795576505464}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9704096b1231be94892a4d79a983e37f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  axes: 0
+  sensitivityX: 15
+  sensitivityY: 15
+  minimumX: -360
+  maximumX: 360
+  minimumY: -60
+  maximumY: 60
+  frameCounter: 20
+--- !u!114 &7935815479795472740
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 64150795576505464}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab4df5f832ec44d46bb9c77e5eae9dc7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minX: -60
+  maxX: 60
+  sensitivity: 3
+  cam: {fileID: 1723496666179486523}
 --- !u!1 &1723496665916957958
 GameObject:
   m_ObjectHideFlags: 0
