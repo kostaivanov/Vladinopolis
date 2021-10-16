@@ -21,8 +21,9 @@ public class CameraLook : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetButtonDown("left shift"))
+        if (Input.GetButton("Enable Debug Button 1"))
         {
+            Debug.Log("crouching");
             rotY += Input.GetAxis("Mouse X") * sensitivity;
             rotX += Input.GetAxis("Mouse Y") * sensitivity;
 

@@ -15,18 +15,15 @@ public class MouseHandler : MonoBehaviourPun
     float mouseX = 0;
     float mouseY = 0;
 
+    Quaternion originalRotation;
+
     void Start()
     {
-        //this.gameObject.transform.eulerAngles = new Vector3(80f, 0.0f, 0.0f);
+        Rigidbody rb = GetComponent<Rigidbody>();
+        if (rb)
+            rb.freezeRotation = true;
+        originalRotation = transform.localRotation;
     }
-    //void OnGUI()
-    //{
-    //    Event e = Event.current;
-    //    if (e.type == EventType.MouseMove && e.control && e.keyCode == KeyCode.shigf)
-    //    {
-    //        mouseX = Input.GetAxis("Mouse X") * horizontalSpeed;
-    //    }
-    //}
 
     void Update()
     {
@@ -35,7 +32,7 @@ public class MouseHandler : MonoBehaviourPun
             return;
         }
 
-        if (Input.GetButtonDown("left shift") && Input.GetAxis("Mouse X") != 0)
+        if (Input.GetButton("Enable Debug Button 1"))
         {
             mouseX = Input.GetAxis("Mouse X") * horizontalSpeed;
             Debug.Log("asdasdasdasdasda");
