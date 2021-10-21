@@ -148,18 +148,17 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 64150795576505464}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9704096b1231be94892a4d79a983e37f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   axes: 0
-  sensitivityX: 15
-  sensitivityY: 15
+  sensitivity: 1.5
   minimumX: -360
   maximumX: 360
-  minimumY: -60
-  maximumY: 60
+  minimumY: -15
+  maximumY: 15
   frameCounter: 20
 --- !u!114 &7935815479795472740
 MonoBehaviour:
@@ -168,7 +167,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 64150795576505464}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ab4df5f832ec44d46bb9c77e5eae9dc7, type: 3}
   m_Name: 
@@ -177,6 +176,10 @@ MonoBehaviour:
   maxX: 60
   sensitivity: 3
   cam: {fileID: 1723496666179486523}
+  minimumX: -360
+  maximumX: 360
+  minimumY: -60
+  maximumY: 60
 --- !u!1 &1723496665916957958
 GameObject:
   m_ObjectHideFlags: 0

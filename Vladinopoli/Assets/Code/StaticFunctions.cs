@@ -6,6 +6,9 @@ public class StaticFunctions : MonoBehaviour
 {
     internal static StaticFunctions instance;
     internal string name;
+    internal bool goLeft;
+    internal bool goRight;
+
     // Start is called before the first frame update
     private void Awake()
     {
@@ -22,5 +25,11 @@ public class StaticFunctions : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
+    }
+
+    private void Start()
+    {
+        goLeft = false;
+        goRight = false;
     }
 }

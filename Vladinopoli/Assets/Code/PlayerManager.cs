@@ -7,6 +7,8 @@ using Photon.Pun.Demo.PunBasics;
 public class PlayerManager : MonoBehaviourPun
 {
     [SerializeField] private GameObject camera;
+    private GameObject makeYourChoiceObject;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -17,6 +19,8 @@ public class PlayerManager : MonoBehaviourPun
             camera.SetActive(false);
         }
 
+        makeYourChoiceObject = GameObject.FindGameObjectWithTag("MakeYourChoiceObject");
+        makeYourChoiceObject.SetActive(true);
         //if (cameraWork != null)
         //{
         //    if (photonView.IsMine)

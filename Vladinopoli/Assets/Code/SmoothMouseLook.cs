@@ -5,17 +5,16 @@ using System.Collections.Generic;
 [AddComponentMenu("Camera-Control/Smooth Mouse Look")]
 public class SmoothMouseLook : MonoBehaviour
 {
-
     public enum RotationAxes { MouseXAndY = 0 }
     public RotationAxes axes = RotationAxes.MouseXAndY;
-    public float sensitivityX = 1F;
-    public float sensitivityY = 1F;
+    [SerializeField] private float sensitivity;
+
 
     public float minimumX = -360F;
     public float maximumX = 360F;
 
-    public float minimumY = -60F;
-    public float maximumY = 60F;
+    public float minimumY = -15F;
+    public float maximumY = 15F;
 
     float rotationX = 0F;
     float rotationY = 0F;
@@ -32,21 +31,18 @@ public class SmoothMouseLook : MonoBehaviour
 
     void Start()
     {
-        Rigidbody rb = GetComponent<Rigidbody>();
-        if (rb)
-            rb.freezeRotation = true;
         originalRotation = transform.localRotation;
     }
 
     void Update()
     {
-        if (axes == RotationAxes.MouseXAndY)
+        if (axes == RotationAxes.MouseXAndY && Input.GetButton("Enable Debug Button 1"))
         {
             rotAverageY = 0f;
             rotAverageX = 0f;
 
-            rotationX += Input.GetAxis("Mouse X") * sensitivityX;
-            rotationY += Input.GetAxis("Mouse Y") * sensitivityY;
+            rotationX += Input.GetAxis("Mouse X") * sensitivity;
+            rotationY += Input.GetAxis("Mouse Y") * sensitivity;
 
             rotArrayX.Add(rotationX);
             rotArrayY.Add(rotationY);
@@ -81,6 +77,19 @@ public class SmoothMouseLook : MonoBehaviour
             Quaternion yQuaternion = Quaternion.AngleAxis(rotAverageY, Vector3.left);
 
             transform.localRotation = originalRotation * xQuaternion * yQuaternion;
+        }
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            //Mistake happened here vvvv
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+        }
+
+        if (Cursor.visible && Input.GetMouseButtonDown(1))
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
         }
     }
 
