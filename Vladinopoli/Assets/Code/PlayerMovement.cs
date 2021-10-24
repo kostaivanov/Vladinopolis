@@ -21,15 +21,11 @@ public class PlayerMovement : MonoBehaviour
         {
             wayPoints.Add(wp);
         }
-        Debug.Log(wayPoints.Count);
     }
 
     // Update is called once per frame
     void Update()
     {
-        Debug.Log("current waypoint = " + currentWP);
-        Debug.Log("previous waypoint = " + previousWP);
-
         if (StaticFunctions.instance.goLeft == true)
         {
             if (indexChanged == false)
@@ -39,7 +35,6 @@ public class PlayerMovement : MonoBehaviour
                 if (currentWP % 2 == 0)
                 {
                     currentWP += 3;
-                    Debug.Log("dasdasdasdasdas");
                 }
 
                 else if (currentWP % 2 == 1)
@@ -61,7 +56,6 @@ public class PlayerMovement : MonoBehaviour
                 if (currentWP % 2 == 0)
                 {
                     currentWP += 2;
-                    Debug.Log("dasdasdasdasdas");
                 }
 
                 else if (currentWP % 2 == 1)
