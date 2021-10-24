@@ -10,7 +10,7 @@ public class PlayerMovement : MonoBehaviour
 
     public float speed = 10.0f;
     public float rotSpeed = 10.0f;
-    //public float lookAhead = 10.0f;
+    internal bool indexChanged = false;
 
     // Start is called before the first frame update
     void Start()
@@ -27,12 +27,12 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log("current waypoint = " + currentWP % 2);
+        Debug.Log("current waypoint = " + currentWP);
         Debug.Log("previous waypoint = " + previousWP);
 
         if (StaticFunctions.instance.goLeft == true)
         {
-            if (currentWP != 1 && Vector3.Distance(this.transform.position, wayPoints[currentWP].transform.position) < 0.1f)
+            if (indexChanged == false)
             {
                 previousWP = currentWP;
 
@@ -46,43 +46,45 @@ public class PlayerMovement : MonoBehaviour
                 {
                     currentWP += 2;
                 }
-
-                StaticFunctions.instance.goLeft = false;
-                StaticFunctions.instance.goRight = false;
+                indexChanged = true;
             }
 
-            if (currentWP >= wayPoints.Count)
-            {
-                currentWP = 0;
-            }
+            MovePlayer();
+        }
 
-            Quaternion lookatWP = Quaternion.LookRotation(wayPoints[currentWP].transform.position - this.transform.position);
-
-            this.transform.rotation = Quaternion.Slerp(this.transform.rotation, lookatWP, rotSpeed * Time.deltaTime);
-
-            this.transform.Translate(0, 0, speed * Time.deltaTime);
-        } 
-
-        else if(StaticFunctions.instance.goRight == true)
+        else if (StaticFunctions.instance.goRight == true)
         {
-            if (Vector3.Distance(this.transform.position, wayPoints[currentWP].transform.position) < 0.1f)
+            if (indexChanged == false)
             {
-                if (currentWP != 0 && currentWP % 2 == 1)
+                previousWP = currentWP;
+
+                if (currentWP % 2 == 0)
                 {
                     currentWP += 2;
+                    Debug.Log("dasdasdasdasdas");
                 }
-                else if (currentWP != 0 && currentWP % 2 == 0)
+
+                else if (currentWP % 2 == 1)
                 {
                     currentWP += 1;
                 }
-                StaticFunctions.instance.goLeft = false;
-                StaticFunctions.instance.goRight = false;
-            }
-            if (currentWP >= wayPoints.Count)
-            {
-                currentWP = 0;
+                indexChanged = true;
             }
 
+            MovePlayer();
+        }
+
+        if (indexChanged == false && currentWP != previousWP)
+        {
+            previousWP = currentWP;
+            StaticFunctions.instance.choiceMade = false;
+        }
+    }
+
+    private void MovePlayer()
+    {
+        if (indexChanged == true)
+        {
             Quaternion lookatWP = Quaternion.LookRotation(wayPoints[currentWP].transform.position - this.transform.position);
 
             this.transform.rotation = Quaternion.Slerp(this.transform.rotation, lookatWP, rotSpeed * Time.deltaTime);
@@ -90,10 +92,16 @@ public class PlayerMovement : MonoBehaviour
             this.transform.Translate(0, 0, speed * Time.deltaTime);
         }
 
-        if (currentWP != previousWP)
+        if (indexChanged == true && Vector3.Distance(this.transform.position, wayPoints[currentWP].transform.position) < 0.1f)
         {
-            previousWP = currentWP;
-            StaticFunctions.instance.choiceMade = false;
+            StaticFunctions.instance.goLeft = false;
+            StaticFunctions.instance.goRight = false;
+            indexChanged = false;
+        }
+
+        if (currentWP >= wayPoints.Count)
+        {
+            currentWP = 0;
         }
     }
 }
