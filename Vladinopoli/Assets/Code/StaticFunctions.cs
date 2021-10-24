@@ -8,7 +8,7 @@ public class StaticFunctions : MonoBehaviour
     internal string name;
     internal bool goLeft;
     internal bool goRight;
-
+    internal bool choiceMade = false;
     // Start is called before the first frame update
     private void Awake()
     {

@@ -12782,7 +12782,7 @@ GameObject:
   - component: {fileID: 1304274046}
   m_Layer: 5
   m_Name: MakeYourChoice
-  m_TagString: Untagged
+  m_TagString: MakeYourChoice
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -16324,7 +16324,7 @@ PrefabInstance:
     - target: {fileID: 64150795576505464, guid: 4cb9ebfdba4765240ade4c3e2da5ae4a,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 839983330988732098, guid: 4cb9ebfdba4765240ade4c3e2da5ae4a,
         type: 3}

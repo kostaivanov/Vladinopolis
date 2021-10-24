@@ -15,13 +15,31 @@ public class GoLeftHandler : MonoBehaviour, IPointerDownHandler
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        StaticFunctions.instance.goLeft = true;
-        leftButtonImage_1.enabled = false;
-        leftButtonImage_2.enabled = false;
+        if (StaticFunctions.instance.choiceMade == false)
+        {
+            StaticFunctions.instance.goLeft = true;
+            leftButtonImage_1.enabled = false;
+            leftButtonImage_2.enabled = false;
 
-        rightButtonImage_1.enabled = false;
-        rightButtonImage_2.enabled = false;
+            rightButtonImage_1.enabled = false;
+            rightButtonImage_2.enabled = false;
 
-        mainImage.enabled = false;
+            mainImage.enabled = false;
+            StaticFunctions.instance.choiceMade = true;
+        }
+    }
+
+    private void Update()
+    {
+        if (StaticFunctions.instance.choiceMade == false)
+        {
+            leftButtonImage_1.enabled = true;
+            leftButtonImage_2.enabled = true;
+
+            rightButtonImage_1.enabled = true;
+            rightButtonImage_2.enabled = true;
+
+            mainImage.enabled = true;
+        }
     }
 }
