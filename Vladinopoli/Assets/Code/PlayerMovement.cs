@@ -27,23 +27,30 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log("current waypoint = " + currentWP);
+        Debug.Log("current waypoint = " + currentWP % 2);
+        Debug.Log("previous waypoint = " + previousWP);
+
         if (StaticFunctions.instance.goLeft == true)
         {
-            if (Vector3.Distance(this.transform.position, wayPoints[currentWP].transform.position) < 0.1f)
+            if (currentWP != 1 && Vector3.Distance(this.transform.position, wayPoints[currentWP].transform.position) < 0.1f)
             {
                 previousWP = currentWP;
+
                 if (currentWP % 2 == 0)
+                {
+                    currentWP += 3;
+                    Debug.Log("dasdasdasdasdas");
+                }
+
+                else if (currentWP % 2 == 1)
                 {
                     currentWP += 2;
                 }
-                else if (currentWP % 2 == 0)
-                {
-                    currentWP += 3;
-                }
+
                 StaticFunctions.instance.goLeft = false;
                 StaticFunctions.instance.goRight = false;
             }
+
             if (currentWP >= wayPoints.Count)
             {
                 currentWP = 0;
@@ -55,17 +62,16 @@ public class PlayerMovement : MonoBehaviour
 
             this.transform.Translate(0, 0, speed * Time.deltaTime);
         } 
+
         else if(StaticFunctions.instance.goRight == true)
         {
-        
-
             if (Vector3.Distance(this.transform.position, wayPoints[currentWP].transform.position) < 0.1f)
             {
-                if (currentWP % 2 == 1)
+                if (currentWP != 0 && currentWP % 2 == 1)
                 {
                     currentWP += 2;
                 }
-                else if (currentWP % 2 == 0)
+                else if (currentWP != 0 && currentWP % 2 == 0)
                 {
                     currentWP += 1;
                 }
