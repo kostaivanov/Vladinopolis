@@ -26,21 +26,32 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Debug.Log("currentWaypoint - " + currentWP);
+        Debug.Log("numberWps - " + wayPoints.Count);
+
         if (StaticFunctions.instance.goLeft == true)
         {
             if (indexChanged == false)
             {
                 previousWP = currentWP;
-
-                if (currentWP % 2 == 0)
+                if (currentWP == wayPoints.Count - 1 || currentWP == wayPoints.Count - 2)
                 {
-                    currentWP += 3;
+                    currentWP = 1;
                 }
-
-                else if (currentWP % 2 == 1)
+                else
                 {
-                    currentWP += 2;
+
+                    if (currentWP % 2 == 0)
+                    {
+                        currentWP += 3;
+                    }
+
+                    else if (currentWP % 2 == 1)
+                    {
+                        currentWP += 2;
+                    }
                 }
+               
                 indexChanged = true;
             }
 
@@ -52,16 +63,23 @@ public class PlayerMovement : MonoBehaviour
             if (indexChanged == false)
             {
                 previousWP = currentWP;
-
-                if (currentWP % 2 == 0)
+                if (currentWP == wayPoints.Count - 1 || currentWP == wayPoints.Count - 2)
                 {
-                    currentWP += 2;
+                    currentWP = 0;
                 }
-
-                else if (currentWP % 2 == 1)
+                else
                 {
-                    currentWP += 1;
+                    if (currentWP % 2 == 0)
+                    {
+                        currentWP += 2;
+                    }
+
+                    else if (currentWP % 2 == 1)
+                    {
+                        currentWP += 1;
+                    }
                 }
+             
                 indexChanged = true;
             }
 
@@ -93,9 +111,6 @@ public class PlayerMovement : MonoBehaviour
             indexChanged = false;
         }
 
-        if (currentWP >= wayPoints.Count)
-        {
-            currentWP = 0;
-        }
+       
     }
 }
