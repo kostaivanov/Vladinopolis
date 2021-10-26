@@ -26,9 +26,6 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log("currentWaypoint - " + currentWP);
-        Debug.Log("numberWps - " + wayPoints.Count);
-
         if (StaticFunctions.instance.goLeft == true)
         {
             if (indexChanged == false)
@@ -109,8 +106,6 @@ public class PlayerMovement : MonoBehaviour
             StaticFunctions.instance.goLeft = false;
             StaticFunctions.instance.goRight = false;
             indexChanged = false;
-        }
-
-       
+        }      
     }
 }
