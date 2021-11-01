@@ -7,20 +7,21 @@ using Photon.Realtime;
 
 public class ConnectToServer : MonoBehaviourPunCallbacks
 {
-    //[SerializeField] private CanvasManager canvasManager;
+    [SerializeField] private GameSettings gameSettings;
 
     // Start is called before the first frame update
     void Start()
     {
+        print("Connecting to server.");
+        PhotonNetwork.NickName = gameSettings.Nickname;
         PhotonNetwork.ConnectUsingSettings();
-        //PhotonNetwork.GameVersion = "0.0.1";
+        PhotonNetwork.GameVersion = gameSettings.GameVersion;
     }
 
     public override void OnConnectedToMaster()
     {
         PhotonNetwork.JoinLobby();
-        print("Connected to server.");
-
+        print($"{PhotonNetwork.LocalPlayer.NickName} has connected to the server.");
     }
 
     public override void OnJoinedLobby()
