@@ -7,7 +7,7 @@ using Photon.Realtime;
 
 public class CreateAndJoinRooms : MonoBehaviourPunCallbacks
 {
-    public InputField createRoomInput;
+    public Text createRoomInput;
     //public InputField joinInput;
 
     //public void CreateRoom()
@@ -22,10 +22,10 @@ public class CreateAndJoinRooms : MonoBehaviourPunCallbacks
 
     public override void OnJoinedRoom()
     {
-        PhotonNetwork.LoadLevel("Game");
+        //PhotonNetwork.LoadLevel("Game");
     }
 
-    public void OnClickCreateRoom()
+    public void OnClick_CreateRoom()
     {
         if (!PhotonNetwork.IsConnected)
         {

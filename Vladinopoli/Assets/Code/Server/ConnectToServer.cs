@@ -13,9 +13,9 @@ public class ConnectToServer : MonoBehaviourPunCallbacks
     void Start()
     {
         print("Connecting to server.");
-        PhotonNetwork.NickName = gameSettings.Nickname;
+        PhotonNetwork.NickName = MasterManager.GameSettings.Nickname;
         PhotonNetwork.ConnectUsingSettings();
-        PhotonNetwork.GameVersion = gameSettings.GameVersion;
+        PhotonNetwork.GameVersion = MasterManager.GameSettings.GameVersion;
     }
 
     public override void OnConnectedToMaster()
@@ -27,7 +27,7 @@ public class ConnectToServer : MonoBehaviourPunCallbacks
     public override void OnJoinedLobby()
     {
         //we load lobby scene here
-        //canvasManager.SwitchCanvas(CanvasType.Lobby);
+
         SceneManager.LoadScene("Lobby");
     }
 
