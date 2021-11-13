@@ -19,7 +19,10 @@ public class ConnectServer : MonoBehaviourPunCallbacks
     {
         Debug.Log("Connected to Photon.", this);
         Debug.Log("My nickname is " + PhotonNetwork.LocalPlayer.NickName, this);
-        PhotonNetwork.JoinLobby();
+        if (!PhotonNetwork.InLobby)
+        {
+            PhotonNetwork.JoinLobby();
+        }
     }
 
     public override void OnDisconnected(DisconnectCause cause)

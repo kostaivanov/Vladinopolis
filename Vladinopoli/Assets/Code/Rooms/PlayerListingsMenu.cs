@@ -4,16 +4,26 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerListingMenu : MonoBehaviourPunCallbacks
+public class PlayerListingsMenu : MonoBehaviourPunCallbacks
 {
     [SerializeField] private Transform content;
     [SerializeField] private PlayerListing _playerListing;
 
     private List<PlayerListing> listings = new List<PlayerListing>();
-
+    private RoomsCanvases _roomsCanvases;
     private void Awake()
     {
         GetCurrentRoomPlayers();
+    }
+
+    public void FirstInitialize(RoomsCanvases canvases)
+    {
+        _roomsCanvases = canvases;
+    }
+
+    public override void OnLeftRoom()
+    {
+        content.DestroyChildren();
     }
 
     private void GetCurrentRoomPlayers()
