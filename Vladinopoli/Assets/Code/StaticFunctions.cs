@@ -12,7 +12,6 @@ public class StaticFunctions : MonoBehaviour
     // Start is called before the first frame update
     private void Awake()
     {
-
         //checking if there is isntance of this object, if not, create one
         if (instance == null)
         {

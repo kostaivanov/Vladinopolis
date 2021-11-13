@@ -4,18 +4,21 @@ using UnityEngine;
 using Photon.Pun;
 using Photon.Realtime;
 
-public class RoomListingMenu : MonoBehaviourPunCallbacks
+public class RoomListingsMenu : MonoBehaviourPunCallbacks
 {
     [SerializeField] private Transform content;
-    [SerializeField] private RoomListing roomListing;
+    [SerializeField] private RoomListing room;
 
     private List<RoomListing> listings = new List<RoomListing>();
+
     public override void OnRoomListUpdate(List<RoomInfo> roomList)
     {
+        Debug.Log("On room update. " + roomList.Count, this);
+
         foreach (RoomInfo info in roomList)
         {
             //Removed from rooms list.
-            if (info.RemovedFromList == true)
+            if (info.RemovedFromList)
             {
                 int index = listings.FindIndex(x => x.RoomInfo.Name == info.Name);
                 if (index != -1)
@@ -27,15 +30,13 @@ public class RoomListingMenu : MonoBehaviourPunCallbacks
             //Added to rooms list.
             else
             {
-                RoomListing listing = Instantiate(roomListing, content);
-                Debug.Log("Added to rooms list.");
+                RoomListing listing = Instantiate(room, content);
                 if (listing != null)
                 {
                     listing.SetRoomInfo(info);
                     listings.Add(listing);
                 }
-            }       
+            }           
         }
     }
-
 }
