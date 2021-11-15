@@ -1,19 +1,37 @@
 ﻿using Photon.Pun;
 using Photon.Realtime;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerListingsMenu : MonoBehaviourPunCallbacks
 {
     [SerializeField] private Transform content;
     [SerializeField] private PlayerListing _playerListing;
+    //[SerializeField] private Text readyUpText;
 
     private List<PlayerListing> listings = new List<PlayerListing>();
     private RoomsCanvases _roomsCanvases;
-    private void Awake()
+    //private bool ready = false;
+    public override void OnEnable()
     {
+        base.OnEnable();
+        //SetReadyUp(false);
         GetCurrentRoomPlayers();
+
+    }
+
+   
+    public override void OnDisable()
+    {
+        base.OnDisable();
+        for (int i = 0; i < listings.Count; i++)
+        {
+            Destroy(listings[i].gameObject);
+        }
+        listings.Clear();
     }
 
     public void FirstInitialize(RoomsCanvases canvases)
@@ -21,10 +39,18 @@ public class PlayerListingsMenu : MonoBehaviourPunCallbacks
         _roomsCanvases = canvases;
     }
 
-    public override void OnLeftRoom()
-    {
-        content.DestroyChildren();
-    }
+    //private void SetReadyUp(bool state)
+    //{
+    //    ready = state;
+    //    if (ready)
+    //    {
+    //        readyUpText.text = "R";
+    //    }
+    //    else
+    //    {
+    //        readyUpText.text = "N";
+    //    }
+    //}
 
     private void GetCurrentRoomPlayers()
     {
@@ -36,12 +62,22 @@ public class PlayerListingsMenu : MonoBehaviourPunCallbacks
 
     private void AddPlayerListing(Player player)
     {
-        PlayerListing listing = Instantiate(_playerListing, content);
-        if (listing != null)
+        int index = listings.FindIndex(x => x.Player == player);
+        //If index is found.
+        if (index != -1)
         {
-            listing.SetPlayerInfo(player);
-            listings.Add(listing);
+            listings[index].SetPlayerInfo(player);
         }
+        else
+        {
+            PlayerListing listing = Instantiate(_playerListing, content);
+            if (listing != null)
+            {
+                listing.SetPlayerInfo(player);
+                listings.Add(listing);
+            }
+        }
+      
     }
 
     public override void OnPlayerEnteredRoom(Player newPlayer)
